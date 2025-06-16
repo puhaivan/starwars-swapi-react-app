@@ -1,9 +1,10 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 
 
-import PersonCard from "./components/personCard";
-import Header from "./components/header";
+import PersonCard from "./components/person-card/personCard";
+import Header from "./components/header/header";
 import ApiError from "./components/apiError";
+import SkeletonCard from "./components/skeletonCard";
 
 function App() {
   const [data, setData] = useState([]);
@@ -22,6 +23,7 @@ function App() {
   setIsLoading(true);
   setError(null);
   try {
+    await new Promise(res => setTimeout(res, 500));
     const res = await fetch(`https://swapi-node.vercel.app/api/${type}?page=${pageNumber}`);
     const json = await res.json();
     const items = (json.results || []).map(p => p.fields);
@@ -94,10 +96,16 @@ function App() {
               card={item}
               ref={isLast ? lastRef : null}
               currentPage={currentPage}
+              searchTerm={searchTerm}
             />
           );
         })}
-        {isLoading && page > 1 && <p className="text-yellow-200">Loading more...</p>}
+        {isLoading && data.length === 0 && (
+  <>
+    <SkeletonCard />
+    <SkeletonCard />
+    <SkeletonCard />
+  </>)}
       </div>
     </div>
   );
