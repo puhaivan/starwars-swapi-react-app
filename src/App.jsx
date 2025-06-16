@@ -5,11 +5,14 @@ import Header from "./components/header";
 function App() {
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
-  const [currentPage, setCurrentPage] = useState("people");
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const observer = useRef();
+
+  const [currentPage, setCurrentPage] = useState(() => {
+  return localStorage.getItem("currentPage") || "people";
+});
 
   const fetchData = async (pageNumber, type) => {
     setIsLoading(true);
@@ -29,6 +32,10 @@ function App() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+  localStorage.setItem("currentPage", currentPage);
+}, [currentPage]);
 
   useEffect(() => {
     fetchData(page, currentPage);
