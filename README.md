@@ -1,12 +1,76 @@
-# React + Vite
+# 🌌 Star Wars Galaxy Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a **React + Vite** web application that allows users to explore Star Wars characters, planets, and vehicles using the [SWAPI-Node API](https://swapi-node.vercel.app/). It features infinite scrolling, search functionality, skeleton loading, and a responsive design styled with **Tailwind CSS**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- Browse Star Wars **people**, **planets**, and **vehicles**
+- **Infinite scroll** with lazy loading
+- **Search bar** with live highlighting
+- Animated **dropdown** navigation
+- **Skeleton loaders** and **error handling UI**
+- Responsive layout with **Tailwind CSS**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/puhaivan/starwars-swapi-react-app.git
+cd  starwars-swapi-react-app.git
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start the development server
+
+```bash
+npm run dev
+```
+
+Open `http://localhost:5173` in your browser.
+
+---
+
+## 🧾 Scripts
+
+| Command           | Description                  |
+|------------------|------------------------------|
+| `npm run dev`    | Start the Vite dev server    |
+---
+
+## 📁 Project Structure
+
+```
+src/
+│
+├── components/       # Reusable UI components
+├── styles/           # Tailwind and global CSS
+├── utils/            # Utility functions
+├── App.jsx           # Main application component
+├── main.jsx          # App entry point
+```
+
+---
+
+## 💫 Credits
+
+Built with using React, Tailwind CSS, and SWAPI.
+
+---
+
+## 📸 Preview
+
+---
+
+## 📄 License
+
+This project is open-source and free to use.
