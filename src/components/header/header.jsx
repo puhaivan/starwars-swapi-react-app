@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
+
 const Header = ({ currentPage, setCurrentPage, searchTerm, setSearchTerm }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
