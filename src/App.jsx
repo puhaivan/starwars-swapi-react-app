@@ -1,6 +1,9 @@
 import { useEffect, useState, useRef, useCallback } from "react";
+
+
 import PersonCard from "./components/personCard";
 import Header from "./components/header";
+import ApiError from "./components/apiError";
 
 function App() {
   const [data, setData] = useState([]);
@@ -8,6 +11,7 @@ function App() {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [error, setError] = useState(null);
   const observer = useRef();
 
   const [currentPage, setCurrentPage] = useState(() => {
@@ -15,23 +19,26 @@ function App() {
 });
 
   const fetchData = async (pageNumber, type) => {
-    setIsLoading(true);
-    try {
-      const res = await fetch(`https://swapi-node.vercel.app/api/${type}?page=${pageNumber}`);
-      const json = await res.json();
-      const items = (json.results || []).map(p => p.fields);
-      setData(prev => {
-        const urls = new Set(prev.map(p => p.url));
-        const filtered = items.filter(p => !urls.has(p.url));
-        return [...prev, ...filtered];
-      });
-      setHasMore(!!json.next);
-    } catch (err) {
-      console.error("Error fetching:", err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  setIsLoading(true);
+  setError(null);
+  try {
+    const res = await fetch(`https://swapi-node.vercel.app/api/${type}?page=${pageNumber}`);
+    const json = await res.json();
+    const items = (json.results || []).map(p => p.fields);
+    setData(prev => {
+      const urls = new Set(prev.map(p => p.url));
+      const filtered = items.filter(p => !urls.has(p.url));
+      return [...prev, ...filtered];
+    });
+    setHasMore(!!json.next);
+  } catch (err) {
+    console.error("Error fetching:", err);
+    setError("Failed to load. Please try again.");
+  } finally {
+    setIsLoading(false);
+  }
+};
+
 
   useEffect(() => {
   localStorage.setItem("currentPage", currentPage);
@@ -70,6 +77,13 @@ function App() {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
+      {error && (
+  <ApiError
+   error={error}
+   currentPage={currentPage}
+   page={page} />
+)}
+      
 
       <div className="w-full flex flex-col items-center space-y-4">
         {filteredData.map((item, index) => {
