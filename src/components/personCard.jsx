@@ -1,8 +1,11 @@
 import  { forwardRef } from "react";
 
-const PersonCard = forwardRef(({ person }, ref) => {
 
-  const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(person.name)}&background=random&rounded=true`;
+import renderDetails from "../utils/renderDetails";
+
+const PersonCard = forwardRef(({ card, currentPage }, ref) => {
+
+  const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(card.name)}&background=random&rounded=true`;
 
 return (
   <div className="flex flex-col justify-center items-center w-full px-4">
@@ -19,13 +22,11 @@ return (
       </div>
       <div className="flex-1 flex justify-center items-center">
         <h3 className="text-yellow-300 text-xl font-bold drop-shadow-[0_0_4px_rgba(255,255,0,0.6)]">
-          {person.name}
+          {card.name}
         </h3>
       </div>
-      <ul className="flex-1 text-left space-y-1 text-blue-100 font-medium">
-        <li>Gender: {person.gender}</li>
-        <li>Birth Year: {person.birth_year}</li>
-        <li>Eye Color: {person.eye_color}</li>
+     <ul className="flex-1 text-sm text-blue-100 space-y-1">
+       {renderDetails(card, currentPage)}
       </ul>
     </div>
   </div>
