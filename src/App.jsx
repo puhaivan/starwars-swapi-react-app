@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import PersonCard from "./components/personCard";
+import Header from "./components/header";
 
 function App() {
   const [data, setData] = useState([]);
@@ -43,9 +44,9 @@ function App() {
   }, [isLoading, hasMore]);
 
   return (
-  <div>
-    <h2>Star Wars Characters</h2>
 
+  <div className="flex flex-col justify-center content-center  m-3 p-3">
+    <Header/>
       {data.map((person, index) => {
         const isLast = index === data.length - 1;
 

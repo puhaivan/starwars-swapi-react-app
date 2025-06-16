@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+body{
+    background-image: url(/images/starwars_background.jpg);
+}
+
+ul{
+    list-style: none;
+}
