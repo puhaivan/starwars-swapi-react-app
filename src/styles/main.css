@@ -1,10 +1,44 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-body{
-    background-image: url(/images/starwars_background.jpg);
+body {
+  background: radial-gradient(1000px 700px at 10% -10%, rgba(0, 174, 255, 0.12), transparent 60%),
+    radial-gradient(900px 600px at 110% 10%, rgba(140, 206, 255, 0.1), transparent 55%),
+    radial-gradient(800px 500px at 50% 110%, rgba(104, 64, 255, 0.1), transparent 60%),
+    linear-gradient(180deg, #080b16 0%, #0a0f22 35%, #05060c 100%);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-ul{
-    list-style: none;
+.bg-sw-stars {
+  position: relative;
+}
+.bg-sw-stars::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-repeat: repeat;
+  background-size: 220px 220px, 300px 300px, 180px 180px, 360px 360px;
+  background-image: radial-gradient(
+      1px 1px at 12% 18%,
+      rgba(255, 255, 255, 0.9) 1px,
+      transparent 1px
+    ),
+    radial-gradient(1px 1px at 76% 42%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+    radial-gradient(1px 1px at 44% 72%, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+    radial-gradient(1px 1px at 88% 78%, rgba(255, 255, 255, 0.75) 1px, transparent 1px);
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.25));
 }
 
+ul {
+  list-style: none;
+}
+
+.bg-sw-hyperspace {
+  background: radial-gradient(1000px 700px at 10% -10%, rgba(0, 174, 255, 0.12), transparent 60%),
+    radial-gradient(900px 600px at 110% 10%, rgba(140, 206, 255, 0.1), transparent 55%),
+    radial-gradient(800px 500px at 50% 110%, rgba(104, 64, 255, 0.1), transparent 60%),
+    linear-gradient(180deg, #080b16 0%, #0a0f22 35%, #05060c 100%);
+}

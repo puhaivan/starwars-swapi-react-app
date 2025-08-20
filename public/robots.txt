@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://swapi-revolution.com/sitemap.xml
