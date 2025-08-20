@@ -1,4 +1,3 @@
-
 const highlightMatch = (text, searchTerm) => {
   if (!searchTerm) return text;
   const regex = new RegExp(`(${searchTerm})`, 'gi');
@@ -15,4 +14,4 @@ const highlightMatch = (text, searchTerm) => {
   );
 };
 
-export default highlightMatch
+export default highlightMatch;

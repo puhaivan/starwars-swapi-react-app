@@ -97,22 +97,30 @@ function App() {
       {error && <ApiError error={error} currentPage={currentPage} page={page} />}
 
       <div className="w-full flex flex-col items-center space-y-4">
-        {filteredData.map((item) => (
-          <PersonCard
-            key={item.url}
-            card={item}
-            currentPage={currentPage}
-            searchTerm={searchTerm}
-          />
-        ))}
-
-        {isLoading && (
+        {isLoading && loadedData.length === 0 && (
           <>
             <SkeletonCard />
             <SkeletonCard />
             <SkeletonCard />
           </>
         )}
+
+        {filteredData.length > 0 ? (
+          filteredData.map((item, index) => {
+            const isLast = index === loadedData.length - 1;
+            return (
+              <PersonCard
+                key={item.url}
+                card={item}
+                ref={isLast ? lastRef : null}
+                currentPage={currentPage}
+                searchTerm={searchTerm}
+              />
+            );
+          })
+        ) : !isLoading && searchTerm ? (
+          <p className="text-gray-400">No results found for "{searchTerm}"</p>
+        ) : null}
 
         <div ref={lastRef} style={{ height: 1 }} />
       </div>

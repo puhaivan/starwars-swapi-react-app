@@ -1,7 +1,8 @@
-
-
 const SkeletonCard = () => (
-  <div className="flex w-full items-center justify-between gap-4 p-4 bg-white/5 rounded-lg animate-pulse">
+  <div
+    className="flex w-full max-w-4xl  text-center gap-6 my-4  px-4 
+                 rounded-lgflex  items-center justify-between p-4 bg-white/5 rounded-lg animate-pulse"
+  >
     <div className="w-24 h-24 bg-gray-700 rounded-full"></div>
     <div className="flex-1 space-y-2">
       <div className="w-3/4 h-4 bg-gray-700 rounded"></div>
